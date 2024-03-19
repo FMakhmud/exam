@@ -22,7 +22,7 @@ class CategorySerializer(ModelSerializer):
         model = Category
         fields = ('id', 'name',)
 
-    def average_salary(self):
+    def calculate_average_salary(self):
         if self.min_salary > 2 * self.max_salary:
             return (self.min_salary + self.max_salary) / 2
         else:
@@ -30,7 +30,7 @@ class CategorySerializer(ModelSerializer):
 
     @property
     def average_salary(self):
-        return self.average_salary()
+        return self.calculate_average_salary()
 
     def get_salary(self, value):
         if self.min_salary > 2 * self.max_salary:
